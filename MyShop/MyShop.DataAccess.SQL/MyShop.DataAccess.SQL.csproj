@@ -55,6 +55,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SQLRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -64,6 +65,10 @@
     <ProjectReference Include="..\MyShop.Core\MyShop.Core.csproj">
       <Project>{FD7DB9DA-82CB-45FD-A29A-0F5BEE9BDFAD}</Project>
       <Name>MyShop.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MyShop.DataAccess.InMemory\MyShop.DataAccess.InMemory.csproj">
+      <Project>{C4DEDE17-2BE8-401F-82DE-63B0E73D89E3}</Project>
+      <Name>MyShop.DataAccess.InMemory</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
