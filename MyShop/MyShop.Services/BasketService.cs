@@ -19,11 +19,12 @@ namespace MyShop.Services
 
         public BasketService(IRepository<Product> ProductContext, IRepository<Basket> BasketContext)
         {
-            this.productContext = ProductContext;
+            
             this.basketContext = BasketContext;
+            this.productContext = ProductContext;
         }
 
-        private Basket GetBasket(HttpContextBase httpContext, bool creatIfNull)
+        private Basket GetBasket(HttpContextBase httpContext, bool createIfNull)
         {
             HttpCookie cookie = httpContext.Request.Cookies.Get(BasketSessionName);
 
@@ -39,7 +40,7 @@ namespace MyShop.Services
                 }
                 else
                 {
-                    if (creatIfNull)
+                    if (createIfNull)
                     {
                         basket = CreateNewBasket(httpContext);
                     }
@@ -47,7 +48,7 @@ namespace MyShop.Services
             }
             else
             {
-                if (creatIfNull)
+                if (createIfNull)
                 {
                     basket = CreateNewBasket(httpContext);
                 }
@@ -88,7 +89,7 @@ namespace MyShop.Services
             }
             else
             {
-                item.Quantity = item.Quantity + 1;
+                item.Quantity++;
             }
 
             basketContext.Commit();
@@ -119,8 +120,9 @@ namespace MyShop.Services
                                   Id = b.Id,
                                   Quantity = b.Quantity,
                                   ProductName = p.Name,
-                                  Price = p.Price,
-                                  Image = p.Image
+                                  Image = p.Image,
+                                  Price = p.Price
+                                  
                               }
                                   ).ToList();
 
@@ -145,7 +147,7 @@ namespace MyShop.Services
                                         join p in productContext.Collection() on item.ProductId equals p.Id
                                         select item.Quantity * p.Price).Sum();
 
-                model.BasketCount = basketCount ?? 0;
+                model.BasketCount = basketCount ?? 0; 
                 model.BasketTotal = basketTotal ?? decimal.Zero;
 
                 return model;
