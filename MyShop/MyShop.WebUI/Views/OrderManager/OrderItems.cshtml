@@ -29,7 +29,7 @@
                 @Html.DisplayFor(modelItem => item.Quantity)
             </td>
             <td>
-                @String.Format("{0:c}", item.Price * item.Quantity)
+                ₹@Html.DisplayFor(modelItem => item.Price * item.Quantity)
             </td>
         </tr>
     }
@@ -39,7 +39,7 @@
             <strong>Order Total</strong>
         </td>
         <td>
-            @String.Format("{0:c}", (from p in Model select p.Quantity * p.Price).Sum())
+            ₹@Html.DisplayFor(modelItem => (from p in Model select p.Quantity * p.Price).Sum())
         </td>
     </tr>
 
