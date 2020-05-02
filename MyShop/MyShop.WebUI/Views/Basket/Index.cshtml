@@ -19,7 +19,7 @@
             @Html.DisplayNameFor(model => model.Price)
         </th>
         <th>
-            Line Total
+            Sub Total
         </th>
         <th></th>
     </tr>
@@ -49,7 +49,7 @@
     <tr>
         <td colspan="4" style="text-align:right"><strong>Basket Total</strong></td>
         <td>@String.Format("{0:c}", (from p in Model select p.Price * p.Quantity).Sum())</td>
-        
+        <td><a href="@Url.Action("Checkout", "Basket")">Checkout</a></td>
     </tr>
 
 </table>
