@@ -95,9 +95,9 @@ namespace MyShop.WebUI.Tests.Controllers
             IRepository<Order> orders = new MockContext<Order>();
             IOrderService orderService = new OrderService(orders);
 
-            customers.Insert(new Customer() { Id = "1", Email = "brett.hargreaves@gmail.com", PinCode = "90210" });
+            customers.Insert(new Customer() { Id = "1", Email = "john.doe@gmail.com", PinCode = "90210" });
 
-            IPrincipal FakeUser = new GenericPrincipal(new GenericIdentity("brett.hargreaves@gmail.com", "Forms"), null);
+            IPrincipal FakeUser = new GenericPrincipal(new GenericIdentity("john.doe@gmail.com", "Forms"), null);
 
 
             var controller = new BasketController(basketService, orderService, customers);
