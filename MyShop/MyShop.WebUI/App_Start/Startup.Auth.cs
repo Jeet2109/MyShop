@@ -60,8 +60,8 @@ namespace MyShop.WebUI
 
             //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             //{
-            //    ClientId = "",
-            //    ClientSecret = ""
+            //    ClientId = "1036836855251-n3r9gpfehf8ulij8ee6b9imjl7iu2j2d.apps.googleusercontent.com",
+            //    ClientSecret = "pE9zUpmPQ4GAh8uwvjwZJ2Ei"
             //});
         }
     }

@@ -29,7 +29,10 @@
                 @Html.DisplayFor(modelItem => item.Quantity)
             </td>
             <td>
-                ₹@Html.DisplayFor(modelItem => item.Price * item.Quantity)
+                @{
+                    var product = item.Price * item.Quantity;
+                    <span>₹@product</span>
+                }
             </td>
         </tr>
     }
@@ -39,7 +42,10 @@
             <strong>Order Total</strong>
         </td>
         <td>
-            ₹@Html.DisplayFor(modelItem => (from p in Model select p.Quantity * p.Price).Sum())
+            @{
+                var psum = (from p in Model select p.Price * p.Quantity).Sum();
+                <span>₹@psum</span>
+            }
         </td>
     </tr>
 

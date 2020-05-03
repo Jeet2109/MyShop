@@ -39,7 +39,11 @@
                 @Html.DisplayFor(modelItem => item.Price)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Price * item.Quantity)
+                @{
+                    var product = item.Price * item.Quantity;
+                    <span>@product</span>
+                }
+
             </td>
             <td>
                 <a href="@Url.Action("RemoveFromBasket", "Basket", new { Id=item.Id })" class="btn btn-danger">Delete</a>
@@ -48,7 +52,13 @@
     }
     <tr>
         <td colspan="4" style="text-align:right"><strong>Basket Total</strong></td>
-        <td>₹@Html.DisplayFor(modelItem => (from p in Model select p.Price * p.Quantity).Sum())</td>
+        <td>
+            @{ 
+                var psum = (from p in Model select p.Price * p.Quantity).Sum();
+                <span>₹@psum</span>
+            }
+
+        </td>
         <td><a href="@Url.Action("Checkout", "Basket")">Checkout</a></td>
     </tr>
 
